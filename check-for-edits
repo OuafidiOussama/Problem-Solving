@@ -1,0 +1,33 @@
+function findModifications(str1, str2) {
+    const modifications = [];
+  
+    for (let i = 0; i < Math.max(str1.length, str2.length); i++) {
+      if (str1[i] !== str2[i]) {
+        if (str1[i] === undefined) {
+          modifications.push(`Added "${str2[i]}" at position ${i+1}`);
+        } else if (str2[i] === undefined) {
+          modifications.push(`Deleted "${str1[i]}" at position ${i+1}`);
+        } else {
+          modifications.push(
+            `Changed "${str1[i]}" to "${str2[i]}" at position ${i+1}`
+          );
+        }
+      }
+    }
+  
+    return modifications;
+  }
+
+  const a = "pole"
+  const b = "ple"
+  
+  const updates = findModifications(a, b)
+
+  if (updates.length === 0) {
+    console.log("The strings are identical.");
+  } else {
+    console.log("updates:");
+    for (const update of updates) {
+      console.log(update);
+    }
+  }
